@@ -25,9 +25,19 @@ class MainActivity : AppCompatActivity() {
         })
 
         thread {
-            db.userDao().insertUser(
-                User(1, "Takana", "Taro")
-            )
+            val userList = mutableListOf<User>()
+
+            for (i in 0..100) {
+                userList.add(
+                    User(
+                        i,
+                        "Taaka$i",
+                        "Taro$i"
+                    )
+                )
+            }
+
+            db.userDao().insertUserList(userList)
         }
     }
 }
