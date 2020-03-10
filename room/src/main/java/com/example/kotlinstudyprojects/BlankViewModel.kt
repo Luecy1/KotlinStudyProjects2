@@ -6,10 +6,12 @@ import androidx.room.RoomDatabase
 import kotlinx.coroutines.launch
 
 class BlankViewModel(
+    val userDao: UserDao
 ) : ViewModel() {
 
     fun insertUser() {
         viewModelScope.launch {
+
 
         }
     }
