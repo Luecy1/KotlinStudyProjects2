@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KotlinStudyProjects</string>
+    <string name="button_add">追加</string>
 </resources>
