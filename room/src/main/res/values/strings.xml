@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">KotlinStudyProjects</string>
     <string name="button_add">追加</string>
+    <string name="label_move">移動</string>
 </resources>

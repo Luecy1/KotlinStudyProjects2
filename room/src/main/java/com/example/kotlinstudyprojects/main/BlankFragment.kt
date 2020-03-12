@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.example.kotlinstudyprojects.R
 import com.example.kotlinstudyprojects.RoomApplication
 import com.example.kotlinstudyprojects.ViewModelFactory
 import com.example.kotlinstudyprojects.databinding.BlankFragmentBinding
@@ -36,6 +38,10 @@ class BlankFragment : Fragment() {
                 Log.d("Room", "user$user")
             }
         })
+
+        binding.buttonMove.setOnClickListener {
+            findNavController().navigate(R.id.action_blankFragment_to_subFragment)
+        }
     }
 }
 
