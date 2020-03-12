@@ -1,7 +1,9 @@
-package com.example.kotlinstudyprojects
+package com.example.kotlinstudyprojects.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kotlinstudyprojects.room.User
+import com.example.kotlinstudyprojects.room.UserDao
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 

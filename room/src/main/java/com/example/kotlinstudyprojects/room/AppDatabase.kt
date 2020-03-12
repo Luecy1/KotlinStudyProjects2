@@ -1,4 +1,4 @@
-package com.example.kotlinstudyprojects
+package com.example.kotlinstudyprojects.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

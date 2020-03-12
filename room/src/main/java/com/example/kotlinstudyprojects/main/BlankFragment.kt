@@ -1,4 +1,4 @@
-package com.example.kotlinstudyprojects
+package com.example.kotlinstudyprojects.main
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.example.kotlinstudyprojects.RoomApplication
+import com.example.kotlinstudyprojects.ViewModelFactory
 import com.example.kotlinstudyprojects.databinding.BlankFragmentBinding
 
 class BlankFragment : Fragment() {
@@ -31,7 +33,7 @@ class BlankFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.userDao.getAll().observe(viewLifecycleOwner, Observer { users ->
             for (user in users) {
-                Log.d("Fragment", "user$user")
+                Log.d("Room", "user$user")
             }
         })
     }

@@ -7,13 +7,13 @@
 
         <variable
             name="viewmodel"
-            type="com.example.kotlinstudyprojects.BlankViewModel" />
+            type="com.example.kotlinstudyprojects.main.BlankViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".BlankFragment">
+        tools:context=".main.BlankFragment">
 
         <Button
             android:id="@+id/button_add"

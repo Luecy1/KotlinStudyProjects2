@@ -5,6 +5,8 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.example.kotlinstudyprojects.main.BlankViewModel
+import com.example.kotlinstudyprojects.room.AppDatabase
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory constructor(
@@ -19,7 +21,9 @@ class ViewModelFactory constructor(
         handle: SavedStateHandle
     ) = with(modelClass) {
         when {
-            isAssignableFrom(BlankViewModel::class.java) -> BlankViewModel(database.userDao())
+            isAssignableFrom(BlankViewModel::class.java) -> BlankViewModel(
+                database.userDao()
+            )
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     } as T
