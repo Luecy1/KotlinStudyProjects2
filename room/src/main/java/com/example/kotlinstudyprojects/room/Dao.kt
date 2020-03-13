@@ -12,8 +12,8 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAll(): LiveData<List<User>>
 
-    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
-    fun loadAllByIds(userIds: IntArray): LiveData<List<User>>
+    @Query("SELECT * FROM user WHERE uid = :userId")
+    fun loadById(userId: Int): LiveData<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)

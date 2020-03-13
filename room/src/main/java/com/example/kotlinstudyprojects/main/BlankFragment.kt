@@ -27,6 +27,7 @@ class BlankFragment : Fragment() {
         binding = BlankFragmentBinding.inflate(layoutInflater, container, false)
 
         binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
 
         return binding.root
     }
