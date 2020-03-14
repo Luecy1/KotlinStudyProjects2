@@ -1,0 +1,15 @@
+https://qiita.com/takahirom/items/3e75581c6f8d4d31b7fa
+
+RecyclerViewの実装
+
+Connecting to the internet
+
+Repository
+
+DI
+
+Multi Module
+
+Test
+
+https://github.com/android/architecture-samples
