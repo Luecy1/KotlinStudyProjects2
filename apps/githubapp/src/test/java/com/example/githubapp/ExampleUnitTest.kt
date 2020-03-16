@@ -1,6 +1,9 @@
 package com.example.githubapp
 
 import com.example.githubapp.retrofit.data.GithubClientFactory
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -15,13 +18,17 @@ class ExampleUnitTest {
         assertEquals(4, 2 + 2)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
     fun client() {
         val client = GithubClientFactory.create()
-        val listRepos = client.listRepos("android")
-        val response = listRepos.execute()
 
-        assertEquals("android/.github", response.body()?.first()?.full_name)
+        val listRepos = runBlocking {
+            val listRepos = client.listRepos("android")
+            listRepos
+        }
+
+        assertEquals("android/.github", listRepos.first().full_name)
     }
 }
 
