@@ -10,7 +10,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/room" />
+            <option value="$PROJECT_DIR$/apps" />
+            <option value="$PROJECT_DIR$/apps/githubapp" />
+            <option value="$PROJECT_DIR$/apps/room" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
