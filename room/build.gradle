@@ -69,16 +69,24 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
 
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation "com.squareup.retrofit2:converter-moshi:2.7.2"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:1.9.2"
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.2"
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+
+    // Okhttp
+    def okhttp_version = '3.13.1'
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
     testImplementation 'junit:junit:4.12'
     // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    // Assertions
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.ext:truth:1.2.0'
-    androidTestImplementation 'com.google.truth:truth:1.0'
 
 }
