@@ -17,6 +17,11 @@ class RetrofitTest {
             listRepos
         }
 
-        assertEquals("android/.github", listRepos.first().fullName)
+        val repo = listRepos.first()
+        assertEquals("android/.github", repo.fullName)
+        assertEquals(".github", repo.name)
+        assertEquals("Repo hosting default community health files.", repo.description)
+        assertEquals("https://api.github.com/repos/android/.github", repo.url)
+
     }
 }

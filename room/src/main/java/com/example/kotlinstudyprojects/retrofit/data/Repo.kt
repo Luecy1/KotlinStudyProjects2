@@ -8,5 +8,11 @@ data class Repo(
     val id: Long,
     val name: String,
     @Json(name = "full_name")
-    val fullName: String
+    val fullName: String,
+    val description: String?,
+    val url: String,
+    val forks: Long,
+    val watchers: Long,
+    @Json(name = "stargazers_count")
+    val starCount: Long
 )
