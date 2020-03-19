@@ -34,7 +34,7 @@ class SubFragment : Fragment() {
         binding.recyclerView.adapter = subAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.userList.observe(viewLifecycleOwner, Observer {
+        viewModel.userDao.getAll().observe(viewLifecycleOwner, Observer {
             subAdapter.submitList(it)
         })
 

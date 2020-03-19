@@ -3,8 +3,11 @@ package com.example.kotlinstudyprojects.sub
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlinstudyprojects.room.User
+import com.example.kotlinstudyprojects.room.UserDao
 
-class SubViewModel : ViewModel() {
+class SubViewModel(
+    val userDao: UserDao
+) : ViewModel() {
 
     val userList: MutableLiveData<List<User>>
         get() = _userList

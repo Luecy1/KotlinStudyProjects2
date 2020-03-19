@@ -26,6 +26,7 @@ class ViewModelFactory constructor(
                 database.userDao()
             )
             isAssignableFrom(SubViewModel::class.java) -> SubViewModel(
+                database.userDao()
             )
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
