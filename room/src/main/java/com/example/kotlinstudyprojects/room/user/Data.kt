@@ -1,4 +1,4 @@
-package com.example.kotlinstudyprojects.room
+package com.example.kotlinstudyprojects.room.user
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

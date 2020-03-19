@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinstudyprojects.databinding.SubItemBinding
-import com.example.kotlinstudyprojects.room.User
+import com.example.kotlinstudyprojects.room.user.User
 
 class SubAdapter(
     private val viewModel: SubViewModel

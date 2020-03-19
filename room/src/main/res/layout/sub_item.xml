@@ -11,7 +11,7 @@
 
         <variable
             name="user"
-            type="com.example.kotlinstudyprojects.room.User" />
+            type="com.example.kotlinstudyprojects.room.user.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

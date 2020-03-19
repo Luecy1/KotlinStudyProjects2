@@ -13,6 +13,7 @@ import com.example.kotlinstudyprojects.R
 import com.example.kotlinstudyprojects.RoomApplication
 import com.example.kotlinstudyprojects.ViewModelFactory
 import com.example.kotlinstudyprojects.databinding.BlankFragmentBinding
+import com.example.kotlinstudyprojects.retrofit.GithubClientFactory
 
 class BlankFragment : Fragment() {
 
@@ -40,6 +41,12 @@ class BlankFragment : Fragment() {
             }
         })
 
+        viewModel.repoDao.getAll().observe(viewLifecycleOwner, Observer { repos ->
+            for (repo in repos) {
+                Log.d("Room", repo.toString())
+            }
+        })
+
         binding.buttonMove.setOnClickListener {
             findNavController().navigate(R.id.action_blankFragment_to_subFragment)
         }
@@ -48,5 +55,8 @@ class BlankFragment : Fragment() {
 
 fun Fragment.getViewModelFactory(): ViewModelFactory {
     val roomDatabase = (requireContext().applicationContext as RoomApplication).roomDatabase
-    return ViewModelFactory(roomDatabase, this)
+
+    val gitHubService = GithubClientFactory.create()
+
+    return ViewModelFactory(roomDatabase, gitHubService, this)
 }

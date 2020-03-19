@@ -6,12 +6,14 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.kotlinstudyprojects.main.BlankViewModel
+import com.example.kotlinstudyprojects.retrofit.GitHubService
 import com.example.kotlinstudyprojects.room.AppDatabase
 import com.example.kotlinstudyprojects.sub.SubViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory constructor(
     private val database: AppDatabase,
+    private val gitHubService: GitHubService,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
@@ -23,7 +25,9 @@ class ViewModelFactory constructor(
     ) = with(modelClass) {
         when {
             isAssignableFrom(BlankViewModel::class.java) -> BlankViewModel(
-                database.userDao()
+                database.userDao(),
+                database.RepoDao(),
+                gitHubService
             )
             isAssignableFrom(SubViewModel::class.java) -> SubViewModel(
                 database.userDao()
