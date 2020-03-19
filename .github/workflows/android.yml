@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: apk
-        path: room/build/outputs/apk/debug/room-debug.apk
+        path: room/build/outputs
