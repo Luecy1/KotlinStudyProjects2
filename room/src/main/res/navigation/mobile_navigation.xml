@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_blankFragment_to_subFragment"
             app:destination="@id/subFragment" />
+        <action
+            android:id="@+id/action_blankFragment_to_cancelFragment"
+            app:destination="@id/cancelFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +23,8 @@
         android:name="com.example.kotlinstudyprojects.sub.SubFragment"
         android:label="sub_fragment"
         tools:layout="@layout/sub_fragment" />
+    <fragment
+        android:id="@+id/cancelFragment"
+        android:name="com.example.kotlinstudyprojects.cancel.CancelFragment"
+        android:label="CancelFragment" />
 </navigation>

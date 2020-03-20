@@ -50,6 +50,10 @@ class BlankFragment : Fragment() {
         binding.buttonMove.setOnClickListener {
             findNavController().navigate(R.id.action_blankFragment_to_subFragment)
         }
+
+        binding.cancelMove.setOnClickListener {
+            findNavController().navigate(R.id.action_blankFragment_to_cancelFragment)
+        }
     }
 }
 

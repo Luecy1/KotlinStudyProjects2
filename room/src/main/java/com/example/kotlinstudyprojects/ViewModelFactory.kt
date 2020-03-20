@@ -5,6 +5,7 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.example.kotlinstudyprojects.cancel.CancelViewModel
 import com.example.kotlinstudyprojects.main.BlankViewModel
 import com.example.kotlinstudyprojects.retrofit.GitHubService
 import com.example.kotlinstudyprojects.room.AppDatabase
