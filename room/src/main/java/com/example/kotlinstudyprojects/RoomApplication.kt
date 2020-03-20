@@ -1,8 +1,10 @@
 package com.example.kotlinstudyprojects
 
 import android.app.Application
+import android.os.Debug
 import androidx.room.Room
 import com.example.kotlinstudyprojects.room.AppDatabase
+import timber.log.Timber
 
 class RoomApplication : Application() {
 
@@ -11,4 +13,13 @@ class RoomApplication : Application() {
             applicationContext,
             AppDatabase::class.java, "database.db"
         ).build()
+
+
+    override fun onCreate() {
+        super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.kotlinstudyprojects.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import com.example.kotlinstudyprojects.RoomApplication
 import com.example.kotlinstudyprojects.ViewModelFactory
 import com.example.kotlinstudyprojects.databinding.BlankFragmentBinding
 import com.example.kotlinstudyprojects.retrofit.GithubClientFactory
+import timber.log.Timber
 
 class BlankFragment : Fragment() {
 
@@ -37,13 +37,13 @@ class BlankFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.userDao.getAll().observe(viewLifecycleOwner, Observer { users ->
             for (user in users) {
-                Log.d("Room", "user$user")
+                Timber.d("user$user")
             }
         })
 
         viewModel.repoDao.getAll().observe(viewLifecycleOwner, Observer { repos ->
             for (repo in repos) {
-                Log.d("Room", repo.toString())
+                Timber.d(repo.toString())
             }
         })
 
