@@ -42,5 +42,9 @@ class MyApplication : Application() {
 
         val api = appComponent.api()
         Timber.d("API = %s", api.getResult())
+
+
+        val fruitSet = appComponent.fruit()
+        Timber.d(fruitSet.toString())
     }
 }
