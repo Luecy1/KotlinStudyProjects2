@@ -1,3 +1,4 @@
 rootProject.name='KotlinStudyProjects'
 include ':room'
 include ':dagger'
+include ':dagger2'
