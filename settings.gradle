@@ -1,4 +1,4 @@
 rootProject.name='KotlinStudyProjects'
-include ':room'
-include ':dagger'
-include ':dagger2'
+include ':modules:room'
+include ':modules:dagger'
+include ':modules:dagger2'

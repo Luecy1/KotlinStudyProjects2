@@ -10,9 +10,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/dagger" />
-            <option value="$PROJECT_DIR$/dagger2" />
-            <option value="$PROJECT_DIR$/room" />
+            <option value="$PROJECT_DIR$/modules" />
+            <option value="$PROJECT_DIR$/modules/dagger" />
+            <option value="$PROJECT_DIR$/modules/dagger2" />
+            <option value="$PROJECT_DIR$/modules/room" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
