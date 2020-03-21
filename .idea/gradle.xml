@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/modules" />
             <option value="$PROJECT_DIR$/modules/dagger" />
             <option value="$PROJECT_DIR$/modules/dagger2" />
+            <option value="$PROJECT_DIR$/modules/dagger3" />
             <option value="$PROJECT_DIR$/modules/room" />
           </set>
         </option>
