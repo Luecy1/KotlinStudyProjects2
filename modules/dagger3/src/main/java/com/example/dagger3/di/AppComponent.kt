@@ -1,46 +1,32 @@
 package com.example.dagger3.di
 
+import android.content.Context
+import androidx.lifecycle.ViewModel
 import com.example.dagger3.Api
 import com.example.dagger3.ApiImpl
-import com.example.dagger3.MainActivity
-import dagger.Component
-import dagger.Module
-import dagger.Provides
-import dagger.Subcomponent
-import dagger.android.AndroidInjectionModule
+import com.example.dagger3.MyApplication
+import com.example.dagger3.ui.main.MainViewModel
+import dagger.*
 import dagger.android.AndroidInjector
-import dagger.android.ContributesAndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
+import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
-        MainActivityModule::class,
         ApiModule::class,
-        AndroidInjectionModule::class
+        ViewModelBuilder::class,
+        MainViewModelModule::class,
+        AndroidSupportInjectionModule::class
     ]
 )
-interface AppComponent {
+interface AppComponent : AndroidInjector<MyApplication> {
 
     @Component.Factory
     interface Factory {
-        fun create(): AppComponent
+        fun create(@BindsInstance applicationContext: Context): AppComponent
     }
-
-    fun inject(activity: MainActivity)
-}
-
-//@ActivityScope // Scope が必要な場合
-//@Subcomponent(modules = [...])
-//interface MainActivitySubcomponent : AndroidInjector<MainActivity> {
-//    @Subcomponent.Factory
-//    interface Factory : AndroidInjector.Factory<MainActivity> }
-
-@Module
-abstract class MainActivityModule {
-
-    abstract fun contributeMainActivity(): MainActivity
-
 }
 
 @Module
@@ -50,4 +36,13 @@ class ApiModule {
     fun provideApi(): Api {
         return ApiImpl()
     }
+}
+
+@Module
+abstract class MainViewModelModule {
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindViewModel(viewModel: MainViewModel): ViewModel
+
 }

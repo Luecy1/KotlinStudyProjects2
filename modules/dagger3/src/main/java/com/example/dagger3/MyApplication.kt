@@ -1,19 +1,11 @@
 package com.example.dagger3
 
-import android.app.Activity
-import android.app.Application
 import com.example.dagger3.di.DaggerAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.HasAndroidInjector
+import dagger.android.support.DaggerApplication
 import timber.log.Timber
-import javax.inject.Inject
 
-class MyApplication : Application(), HasActivityInjector {
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+class MyApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -24,8 +16,7 @@ class MyApplication : Application(), HasActivityInjector {
 
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> {
-        return dispatchingAndroidInjector
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.factory().create(this)
     }
-
 }
