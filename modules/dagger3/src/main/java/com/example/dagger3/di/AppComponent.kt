@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.example.dagger3.Api
 import com.example.dagger3.ApiImpl
 import com.example.dagger3.MyApplication
+import com.example.dagger3.ui.main.MainFragment
 import com.example.dagger3.ui.main.MainViewModel
 import dagger.*
 import dagger.android.AndroidInjector
+import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dagger.multibindings.IntoMap
 import javax.inject.Singleton
@@ -40,6 +42,12 @@ class ApiModule {
 
 @Module
 abstract class MainViewModelModule {
+
+    @ContributesAndroidInjector(modules = [
+        ViewModelBuilder::class
+    ])
+    internal abstract fun mainFragment(): MainFragment
+
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
