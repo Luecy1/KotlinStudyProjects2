@@ -8,6 +8,7 @@ import dagger.*
 import javax.inject.Singleton
 
 // ComponentはDaggerライブラリによって中身が作成されるため、interfaceかabstract
+// SubComponentをまとめたModuleも指定
 @Component(modules = [AppModule::class, SubComponentModule::class])
 interface AppComponent {
 
@@ -30,6 +31,7 @@ class AppModule {
     }
 }
 
+// SubComponentとして宣言
 @Subcomponent(modules = [SubModule::class])
 interface SubComponent {
 
@@ -41,6 +43,7 @@ interface SubComponent {
     }
 }
 
+// 宣言方法は親と同じ
 @Module
 class SubModule {
 
@@ -50,5 +53,6 @@ class SubModule {
     }
 }
 
+// SubComponentをまとめるModule
 @Module(subcomponents = [SubComponent::class])
 object SubComponentModule
