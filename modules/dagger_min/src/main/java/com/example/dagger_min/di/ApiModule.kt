@@ -1,8 +1,6 @@
 package com.example.dagger_min.di
 
 import com.example.dagger_min.GithubApi
-import com.example.dagger_min.repo.GithubRepository
-import com.example.dagger_min.repo.GithubRepositoryImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -17,8 +15,8 @@ import javax.inject.Singleton
 @Module
 class ApiModule {
     companion object {
-        const val API_READ_TIMEOUT: Long = 10
-        const val API_CONNECT_TIMEOUT: Long = 10
+        const val API_READ_TIMEOUT: Long = 10L
+        const val API_CONNECT_TIMEOUT: Long = 10L
     }
 
     @Provides
@@ -52,5 +50,4 @@ class ApiModule {
     fun provideAPI(retrofit: Retrofit): GithubApi {
         return retrofit.create(GithubApi::class.java)
     }
-
 }
