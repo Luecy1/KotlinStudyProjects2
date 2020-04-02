@@ -1,7 +1,5 @@
 package com.example.android_testing
 
-import android.service.autofill.TextValueSanitizer
-
 enum class Weather {
     SUNNY, CLOUDY, RAINY
 }
@@ -14,29 +12,28 @@ class WeatherFormatter {
 }
 
 class WeatherForecast(
-    val satellite: Satellite,
-    val recorder: WeatherRecorder,
-    val formatter: WeatherFormatter
+    val satellite: Satellite
 ) {
-    fun recordCurrentWeather() {
+
+    fun shouldBringUmbrella(): Boolean {
         val weather = satellite.getWeather()
-        val formatted = formatter.format(weather)
-        recorder.record(formatted)
+        return when (weather) {
+            Weather.SUNNY, Weather.CLOUDY -> false
+            Weather.RAINY -> true
+        }
     }
 }
 
-class WeatherRecorder {
-
-    fun record(weather: String) {
-
-    }
-
-}
-
-class Satellite {
-
-    fun getWeather(): Weather {
+open class Satellite {
+    open fun getWeather(): Weather {
         return Weather.SUNNY
     }
+}
 
+class StubSatellite(
+    val anyWeather: Weather
+) : Satellite() {
+    override fun getWeather(): Weather {
+        return anyWeather
+    }
 }
