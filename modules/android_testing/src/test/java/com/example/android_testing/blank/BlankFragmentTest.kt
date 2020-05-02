@@ -40,6 +40,8 @@ class BlankFragmentTest {
     @Test
     fun getUser() {
         val tanaka = User(1L, "tanaka", "taro")
+        val suzuki = User(2L, "suzuki", "hiroshi")
+
 
         val userDao = mock<UserDao>(name = "userDao")
         whenever(userDao.getAll()).thenReturn(liveData {
