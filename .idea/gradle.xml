@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/modules/dagger_min" />
             <option value="$PROJECT_DIR$/modules/dagger_subcomponents" />
             <option value="$PROJECT_DIR$/modules/room" />
+            <option value="$PROJECT_DIR$/modules/slideshow" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
