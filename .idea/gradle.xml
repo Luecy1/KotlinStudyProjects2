@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/modules/dagger3" />
             <option value="$PROJECT_DIR$/modules/dagger_min" />
             <option value="$PROJECT_DIR$/modules/dagger_subcomponents" />
+            <option value="$PROJECT_DIR$/modules/mediasession" />
             <option value="$PROJECT_DIR$/modules/room" />
             <option value="$PROJECT_DIR$/modules/slideshow" />
           </set>
