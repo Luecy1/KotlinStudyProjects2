@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     var mediaPlayer: MediaPlayer? = null
 
+    private val musicList = mutableSetOf<Music>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -61,10 +63,13 @@ class MainActivity : AppCompatActivity() {
                 null,
                 null
             )?.use { cursor ->
-                if (cursor.moveToFirst()) {
+
+                while (cursor.moveToNext()) {
                     val id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
                     val title =
                         cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
+
+                    musicList += Music(id, title)
 
                     Log.d("Audio", "id $id")
                     Log.d("Audio", "title $title")
@@ -73,17 +78,24 @@ class MainActivity : AppCompatActivity() {
                         MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                         id
                     )
-
                     this.audio = uri
-                    hello.text = uri.toString()
-                    Toast.makeText(this, uri.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
+
+            hello.text = musicList.toString()
         }
 
         play.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(this, audio).apply {
-                start()
+            if (mediaPlayer == null) {
+
+                val uri = ContentUris.withAppendedId(
+                    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                    musicList.first().id
+                )
+
+                mediaPlayer = MediaPlayer.create(this, uri).apply {
+                    start()
+                }
             }
         }
     }
@@ -107,4 +119,14 @@ class MainActivity : AppCompatActivity() {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
+    }
 }
+
+data class Music(
+    val id: Long,
+    val title: String
+)
