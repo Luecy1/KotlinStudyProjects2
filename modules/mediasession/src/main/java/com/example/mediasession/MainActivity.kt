@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -83,21 +84,35 @@ class MainActivity : AppCompatActivity() {
             }
 
             hello.text = musicList.toString()
-        }
+            val musicAdapter = MusicAdapter(LayoutInflater.from(this)) { music ->
+                if (mediaPlayer == null) {
 
-        play.setOnClickListener {
-            if (mediaPlayer == null) {
+                    val uri = ContentUris.withAppendedId(
+                        MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                        music.id
+                    )
 
-                val uri = ContentUris.withAppendedId(
-                    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-                    musicList.first().id
-                )
+                    mediaPlayer = MediaPlayer.create(this, uri).apply {
+                        start()
+                    }
+                } else if (mediaPlayer!!.isPlaying) {
+                    mediaPlayer!!.release()
 
-                mediaPlayer = MediaPlayer.create(this, uri).apply {
-                    start()
+                    val uri = ContentUris.withAppendedId(
+                        MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                        music.id
+                    )
+
+                    mediaPlayer = MediaPlayer.create(this, uri).apply {
+                        start()
+                    }
                 }
             }
+            music_list.adapter = musicAdapter
+            musicAdapter.submitList(musicList.toList())
+
         }
+
     }
 
     override fun onRequestPermissionsResult(
@@ -116,8 +131,6 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onDestroy() {
