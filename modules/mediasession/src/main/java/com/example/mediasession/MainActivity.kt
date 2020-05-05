@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val REQUEST_CODE = 1
@@ -110,6 +111,9 @@ class MainActivity : AppCompatActivity() {
             }
             music_list.adapter = musicAdapter
             musicAdapter.submitList(musicList.toList())
+
+            val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+            music_list.addItemDecoration(itemDecoration)
 
         }
 
