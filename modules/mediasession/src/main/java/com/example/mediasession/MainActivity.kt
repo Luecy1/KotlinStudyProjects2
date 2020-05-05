@@ -21,9 +21,9 @@ private const val REQUEST_CODE = 1
 
 class MainActivity : AppCompatActivity() {
 
-    var audio: Uri? = null
+    private var audio: Uri? = null
 
-    var mediaPlayer: MediaPlayer? = null
+    private var mediaPlayer: MediaPlayer? = null
 
     private val musicList = mutableSetOf<Music>()
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             val contentResolver = applicationContext.contentResolver
-            val cursor = contentResolver.query(
+            contentResolver.query(
                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                 null,
                 null,
@@ -71,10 +71,21 @@ class MainActivity : AppCompatActivity() {
                     val title =
                         cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
 
+                    val displayName =
+                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME))
+
+                    val size = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.SIZE))
+
+                    val album =
+                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM))
+
                     musicList += Music(id, title)
 
                     Log.d("Audio", "id $id")
                     Log.d("Audio", "title $title")
+                    Log.d("Audio", "displayName $displayName")
+                    Log.d("Audio", "size $size")
+                    Log.d("Audio", "album $album")
 
                     val uri = ContentUris.withAppendedId(
                         MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
@@ -84,7 +95,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            hello.text = musicList.toString()
             val musicAdapter = MusicAdapter(LayoutInflater.from(this)) { music ->
                 if (mediaPlayer == null) {
 
@@ -110,7 +120,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             music_list.adapter = musicAdapter
-            musicAdapter.submitList(musicList.toList())
+            musicAdapter.submitList(musicList.toList().sortedBy { it.title })
 
             val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
             music_list.addItemDecoration(itemDecoration)
