@@ -11,17 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/modules" />
-            <option value="$PROJECT_DIR$/modules/alerm" />
-            <option value="$PROJECT_DIR$/modules/android_testing" />
-            <option value="$PROJECT_DIR$/modules/dagger" />
-            <option value="$PROJECT_DIR$/modules/dagger2" />
-            <option value="$PROJECT_DIR$/modules/dagger3" />
-            <option value="$PROJECT_DIR$/modules/dagger_min" />
-            <option value="$PROJECT_DIR$/modules/dagger_subcomponents" />
-            <option value="$PROJECT_DIR$/modules/mediasession" />
             <option value="$PROJECT_DIR$/modules/mediasession2" />
-            <option value="$PROJECT_DIR$/modules/room" />
-            <option value="$PROJECT_DIR$/modules/slideshow" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
