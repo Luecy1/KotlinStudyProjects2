@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.session.MediaControllerCompat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import androidx.fragment.app.viewModels
 import com.example.mediasession2.MediaService
 import com.example.mediasession2.R
 import kotlinx.android.synthetic.main.main_fragment.*
+import timber.log.Timber
 
 class MainFragment : Fragment() {
 
@@ -76,7 +76,7 @@ class MainFragment : Fragment() {
             children: MutableList<MediaBrowserCompat.MediaItem>
         ) {
             super.onChildrenLoaded(parentId, children)
-            Log.d("hoge", children.toString())
+            Timber.d(children.toString())
         }
     }
 

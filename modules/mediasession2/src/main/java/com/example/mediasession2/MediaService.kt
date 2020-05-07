@@ -3,9 +3,9 @@ package com.example.mediasession2
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.session.MediaSessionCompat
-import android.util.Log
 import android.widget.Toast
 import androidx.media.MediaBrowserServiceCompat
+import timber.log.Timber
 
 private val ROOT_TAG = "root"
 
@@ -45,9 +45,7 @@ class MediaService : MediaBrowserServiceCompat() {
         clientUid: Int,
         rootHints: Bundle?
     ): BrowserRoot? {
-        Log.d(
-            "MediaService", "Connected from pkg:$clientPackageName uid:$clientUid"
-        )
+        Timber.d("Connected from pkg:$clientPackageName uid:$clientUid")
         return BrowserRoot(ROOT_TAG, null)
     }
 
