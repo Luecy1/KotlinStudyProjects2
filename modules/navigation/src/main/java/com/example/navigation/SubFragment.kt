@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.sub_fragment.*
 
 
 class SubFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SubFragment()
-    }
 
     private lateinit var viewModel: SubViewModel
 
@@ -21,6 +19,14 @@ class SubFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.sub_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        hello_text.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

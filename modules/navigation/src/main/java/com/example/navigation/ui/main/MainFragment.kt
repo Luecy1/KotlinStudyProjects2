@@ -29,8 +29,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         message.setOnClickListener {
-            val findNavController = findNavController()
-            findNavController.navigate(R.id.action_mainFragment_to_subFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_subFragment)
         }
     }
 
