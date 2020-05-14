@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="48dp"
+            android:height="48dp"
+            android:viewportWidth="48"
+            android:viewportHeight="48">
+            <group
+                android:name="arrow"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:pivotX="24"
+                android:pivotY="24"
+                android:translateX="0"
+                android:translateY="0">
+                <path
+                    android:fillColor="#00000000"
+                    android:pathData="M17.91,24L30.13,24"
+                    android:strokeWidth="2"
+                    android:strokeColor="#000"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round" />
+                <path
+                    android:fillColor="#00000000"
+                    android:pathData="M24.04,18.91l-6.17,5.09l6.17,5.09"
+                    android:strokeWidth="2"
+                    android:strokeColor="#000"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round" />
+            </group>
+            <path
+                android:fillColor="#00000000"
+                android:pathData="M11,11h26v26h-26z"
+                android:strokeWidth="2"
+                android:strokeColor="#000"
+                android:strokeLineCap="round"
+                android:strokeLineJoin="round" />
+        </vector>
+    </aapt:attr>
+    <target android:name="arrow">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="333"
+                    android:interpolator="@android:interpolator/accelerate_decelerate"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.5"
+                    android:valueTo="1" />
+                <objectAnimator
+                    android:duration="333"
+                    android:interpolator="@android:interpolator/accelerate_decelerate"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.5"
+                    android:valueTo="1" />
+                <objectAnimator
+                    android:duration="3333"
+                    android:interpolator="@android:interpolator/accelerate_decelerate"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="369" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
