@@ -23,7 +23,7 @@ class MainFragment : Fragment() {
 
         val icon = AnimatedVectorDrawableCompat.create(
             requireContext(),
-            R.drawable.ic_1099_ar_h
+            R.drawable.big_circle
         )!!
 
         icon.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
@@ -34,7 +34,5 @@ class MainFragment : Fragment() {
         imageView.setOnClickListener {
             icon.start()
         }
-
-        icon.start()
     }
 }
