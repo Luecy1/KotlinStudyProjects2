@@ -12,8 +12,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/modules" />
             <option value="$PROJECT_DIR$/modules/animation" />
-            <option value="$PROJECT_DIR$/modules/mediasession2" />
-            <option value="$PROJECT_DIR$/modules/navigation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
