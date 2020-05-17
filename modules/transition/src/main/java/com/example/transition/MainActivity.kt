@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,17 +22,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = ItemAdapter(this)
+        val adapter = ItemAdapter(this) {
+            Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
+        }
         recycler_view.adapter = adapter
-        recycler_view.layoutManager = GridLayoutManager(this, 4)
+        recycler_view.setHasFixedSize(true)
+        recycler_view.layoutManager = GridLayoutManager(
+            this, 3, GridLayoutManager.VERTICAL, false
+        )
 
         adapter.submitList(getHoloLiveMember(this))
-
     }
 }
 
 class ItemAdapter(
-    private val context: Context
+    private val context: Context,
+    private val onClick: (Item) -> Unit
 ) : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,6 +53,13 @@ class ItemAdapter(
         Picasso.with(imageView.context)
             .load(item.imageUrl)
             .into(imageView)
+
+        holder.textView.text = item.name
+
+        val view = holder.itemView
+        view.setOnClickListener {
+            onClick(item)
+        }
     }
 
     class ItemDiffUtil : DiffUtil.ItemCallback<Item>() {
@@ -60,7 +74,8 @@ class ItemAdapter(
 
     class ViewHolder(
         view: View,
-        val imageView: ImageView = view.findViewById(R.id.imageView)
+        val imageView: ImageView = view.findViewById(R.id.imageView),
+        val textView: TextView = view.findViewById(R.id.textView)
     ) : RecyclerView.ViewHolder(view)
 }
 
