@@ -1,14 +1,17 @@
 package com.example.transition
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -22,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = ItemAdapter(this) {
-            Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
+        val adapter = ItemAdapter(this) { item, imageView ->
+            transitionSubActivity(item, imageView)
         }
         recycler_view.adapter = adapter
         recycler_view.setHasFixedSize(true)
@@ -33,11 +36,26 @@ class MainActivity : AppCompatActivity() {
 
         adapter.submitList(getHoloLiveMember(this))
     }
+
+    fun transitionSubActivity(item: Item, imageView: ImageView) {
+
+        val intent = Intent(this, SubActivity::class.java).apply {
+            putExtra(TAG_NAME, item.name)
+            putExtra(TAG_IMAGE_URL, item.imageUrl)
+        }
+
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            Pair(imageView, VIEW_NAME_IMAGE)
+        )
+
+        ActivityCompat.startActivity(this, intent, options.toBundle())
+    }
 }
 
 class ItemAdapter(
     private val context: Context,
-    private val onClick: (Item) -> Unit
+    private val onClick: (Item, ImageView) -> Unit
 ) : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -58,7 +76,7 @@ class ItemAdapter(
 
         val view = holder.itemView
         view.setOnClickListener {
-            onClick(item)
+            onClick(item, imageView)
         }
     }
 
