@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         adapter.submitList(getHoloLiveMember(this))
     }
 
-    fun transitionSubActivity(item: Item, imageView: ImageView) {
+    private fun transitionSubActivity(item: Item, imageView: ImageView) {
 
         val intent = Intent(this, SubActivity::class.java).apply {
             putExtra(TAG_NAME, item.name)
