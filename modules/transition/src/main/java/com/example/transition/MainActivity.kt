@@ -2,10 +2,12 @@ package com.example.transition
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Outline
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +70,10 @@ class ItemAdapter(
         val item = getItem(position)
 
         val imageView = holder.imageView
+
+        imageView.outlineProvider = clipOutlineProvider
+        imageView.clipToOutline = true
+
         Picasso.with(imageView.context)
             .load(item.imageUrl)
             .into(imageView)
@@ -95,6 +101,17 @@ class ItemAdapter(
         val imageView: ImageView = view.findViewById(R.id.imageView),
         val textView: TextView = view.findViewById(R.id.textView)
     ) : RecyclerView.ViewHolder(view)
+
+    private val clipOutlineProvider = object : ViewOutlineProvider() {
+        override fun getOutline(view: View, outline: Outline) {
+            outline.setOval(
+                0,
+                0,
+                view.width,
+                view.height
+            )
+        }
+    }
 }
 
 data class Item(
