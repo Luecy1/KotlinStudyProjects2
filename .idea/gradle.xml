@@ -25,6 +25,8 @@
             <option value="$PROJECT_DIR$/modules/room" />
             <option value="$PROJECT_DIR$/modules/slideshow" />
             <option value="$PROJECT_DIR$/modules/transition" />
+            <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/ui/myapplication" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
